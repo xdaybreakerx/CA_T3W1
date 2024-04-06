@@ -154,42 +154,22 @@ function exampleStuff() {
 
 }
 
+
 let pokemonTeam = [
 	"pikachu",
 	"squirtle",
 	"charmander",
 	"mew",
-	"baxcalibur",
-	"rayquaza",
 ];
-
 
 
 function logTheTeam() {
 	sortedTeam = pokemonTeam.sort();
 
-	// sortedTeam.forEach((pokemon, arrayIndex) => {
-	// 	console.log(pokemon + " is at index of " + arrayIndex);
-	// });
-
-	// console.log(pokemonTeam.entries());
-	// for (const [index, pokemon] of sortedTeam.entries()) {
-	// 	console.log(`${pokemon} is at index of ${index}`);
-	// }
-
-
 	let [firstPokemon, ...otherPokemon] = sortedTeam;
 
 	console.log(firstPokemon);
 	console.log(otherPokemon);
-
-	// while (true){
-	// 	console.log("Infinite loop");
-	// }
-
-	// while (sortedTeam.length){
-	// 	console.log(sortedTeam.pop());
-	// }
 
 	do {
 		console.log(sortedTeam.pop());
@@ -200,15 +180,10 @@ function logTheTeam() {
 	for (let index = 0; index < sortedTeam.length; index++) {
 		console.log("Pokemon at index " + index + " is " + sortedTeam[index]);
 	}
-
-
-	// for (const pokemon of sortedTeam) {
-	// 	console.log(pokemon);
-	// }
 }
 
+// logTheTeam();
 
-// logTheTeam(); 
 
 const logTheTeamAlternate = (targetSize = 4) => {
 	// double equals is checking for value
@@ -223,6 +198,8 @@ const logTheTeamAlternate = (targetSize = 4) => {
 	}
 }
 logTheTeamAlternate();
+logTheTeamAlternate(2);
+
 
 var smellStrength;
 
@@ -233,9 +210,8 @@ function someSmellyFunction() {
 		return baseStrength * multiplier;
 	}
 
-
-	return smellTotalStrength(smellStrength, 10)
-	// equiv to
+	return smellTotalStrength(smellStrength, 10);
+	// equivalent to:
 	// return 100;
 }
 
@@ -243,38 +219,65 @@ function someSmellyFunction() {
 // console.log(someSmellyFunction());
 // console.log(smellStrength);
 
+
 let person = {
 	name: "Alex",
-	greet: (message) => {
+	greeting: (message) => {
 		console.log("Hello! I have a message for you: ");
 		console.log(message);
 	},
 	farewell: function (message) {
-		console.log("Bye bye! Here are some parting words: ")
+		console.log("Bye bye! Here are some parting words: ");
 		console.log(message);
 	},
 	dance: (dance) => {
-		console.log("Im gonna dance!");
-		dance();
+		console.log("I'm gonna dance!");
+		// this.dance() is for JS classes, not objects
+		// recursive function, do not call
+		// it can crash your browser!
+		person.dance();
 	},
 	listFavouritePokemon: (pokemonList, formatFunction) => {
-		console.log("Hi! I have some favourite pokemon to share. They are: ");
+		console.log("Hi! I have some favourite Pokemon to share. They are: ");
 		formatFunction(pokemonList);
 	}
 }
 
+
 function improvedTeamLogging(pokemonTeam) {
 	let sortedReversedTeam = pokemonTeam.sort().reverse();
+
 	sortedReversedTeam.forEach(pokemonName => {
-		console.log(pokemonName)
+		console.log(pokemonName);
 	});
 }
 
+const capitalisedNameLogging = (pokemonTeam) => {
+	pokemonTeam.forEach(pokemonName => {
+		console.log(pokemonName.toUpperCase());
+	});
+}
+
+
+person.listFavouritePokemon(["pikachu", "blastoise"], improvedTeamLogging);
+
 person.listFavouritePokemon(
-	["pikachu", "blastoise"], 
-	improvedTeamLogging
+	["pikachu", "blastoise"],
+	capitalisedNameLogging
 );
 
+
+
+
+
+
+
+
+
+
+
 // person.greeting("message");
-// person.farewell("messsage")
-// person.dance()
+
+// person.farewell("message");
+
+// person.dance();
