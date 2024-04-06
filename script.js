@@ -165,7 +165,7 @@ let pokemonTeam = [
 
 
 
-function logTheTeam () {
+function logTheTeam() {
 	sortedTeam = pokemonTeam.sort();
 
 	// sortedTeam.forEach((pokemon, arrayIndex) => {
@@ -213,14 +213,68 @@ function logTheTeam () {
 const logTheTeamAlternate = (targetSize = 4) => {
 	// double equals is checking for value
 	// type coercion happens where possible automatically
-	if (pokemonTeam.length == targetSize){
+	if (pokemonTeam.length == targetSize) {
 		console.log("There are + " + targetSize + " pokemon in the team");
 	}
 
 	// triple equals is checking for value AND data type
-	if (pokemonTeam.length === targetSize){
-		console.log("There are " +  targetSize  + " Pokemon in the team, this is from the strict equals comparison");
+	if (pokemonTeam.length === targetSize) {
+		console.log("There are " + targetSize + " Pokemon in the team, this is from the strict equals comparison");
 	}
 }
 logTheTeamAlternate();
 
+var smellStrength;
+
+function someSmellyFunction() {
+	smellStrength = 1;
+
+	let smellTotalStrength = (baseStrength, multiplier) => {
+		return baseStrength * multiplier;
+	}
+
+
+	return smellTotalStrength(smellStrength, 10)
+	// equiv to
+	// return 100;
+}
+
+// console.log(smellStrength);
+// console.log(someSmellyFunction());
+// console.log(smellStrength);
+
+let person = {
+	name: "Alex",
+	greet: (message) => {
+		console.log("Hello! I have a message for you: ");
+		console.log(message);
+	},
+	farewell: function (message) {
+		console.log("Bye bye! Here are some parting words: ")
+		console.log(message);
+	},
+	dance: (dance) => {
+		console.log("Im gonna dance!");
+		dance();
+	},
+	listFavouritePokemon: (pokemonList, formatFunction) => {
+		console.log("Hi! I have some favourite pokemon to share. They are: ");
+		formatFunction(pokemonList);
+	}
+}
+
+function improvedTeamLogging(pokemonTeam) {
+	let sortedReversedTeam = pokemonTeam.sort().reverse();
+	sortedReversedTeam.forEach(pokemonName => {
+		console.log(pokemonName)
+	});
+}
+
+person.listFavouritePokemon(
+	["pikachu", "blastoise"], 
+	improvedTeamLogging
+);
+
+// person.greeting("message");
+// person.farewell("messsage")
+// person.dance()
